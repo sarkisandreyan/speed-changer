@@ -1,0 +1,52 @@
+@use '../styles/utils' as *;
+
+.dropdown {
+  position: absolute;
+  top: rem(44px);
+  left: rem(37px);
+  background-color: #fff;
+  z-index: 99;
+  color: var(--base-800);
+  font-variation-settings: 'wght' 465;
+  font-size: rem(14px);
+  border-radius: rem(7px);
+  border: rem(1px) solid var(--base-500);
+  overflow: hidden;
+  box-shadow: rem(0px) rem(1px) rem(16px) rem(1px) rgb(0 0 0 / 10%);
+  max-width: rem(215px);
+  white-space: nowrap;
+
+  .dropdown-option {
+    padding: rem(8px) rem(11px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:not(:last-child) {
+      border-bottom: rem(1px) solid var(--base-500);
+    }
+
+    &.dropdown-option-active {
+      background-color: var(--base-100);
+      cursor: pointer;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .dropdown {
+    background-color: var(--grey-1000);
+    color: var(--grey-100);
+    border-color: var(--grey-600);
+
+    .dropdown-option {
+      &:not(:last-child) {
+        border-bottom: rem(1px) solid var(--grey-600);
+      }
+
+      &.dropdown-option-active {
+        background-color: var(--grey-900);
+        cursor: pointer;
+      }
+    }
+  }
+}

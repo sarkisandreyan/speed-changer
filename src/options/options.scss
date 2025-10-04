@@ -1,0 +1,185 @@
+@use '../styles/utils' as *;
+@use '../styles/typography';
+@use '../styles/iconography';
+@use '../styles/theme';
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: 'Speed Changer Inter';
+  font-size: 100%;
+  margin: 0 0 rem(56px);
+  line-height: 1.5;
+  background: linear-gradient(to bottom, var(--base-200), var(--base-100)) fixed;
+  accent-color: var(--base-400);
+  color: var(--grey-1000);
+  color-scheme: light dark;
+}
+
+.container {
+  max-width: rem(720px);
+  width: 100%;
+  margin: rem(48px) auto;
+  padding: 0 rem(20px);
+}
+
+h1 {
+  font-size: rem(28px);
+  font-variation-settings: 'wght' 600;
+  margin-bottom: rem(16px);
+  text-indent: rem(20px);
+}
+
+section {
+  margin-bottom: rem(56px);
+}
+
+h2 {
+  font-size: rem(20px);
+  font-variation-settings: 'wght' 500;
+  margin-bottom: rem(20px);
+  text-indent: rem(20px);
+}
+
+.options-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #fff;
+  border: rem(1px) solid color-mix(in srgb, var(--base-800) 20%, transparent);
+  border-radius: rem(14px);
+  box-shadow: 0 rem(5px) rem(25px)
+    color-mix(in srgb, currentcolor 2.5%, transparent);
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(8px);
+    justify-content: space-between;
+    align-items: center;
+    padding: rem(14px) rem(20px);
+    &:not(:last-child) {
+      border-bottom: inherit;
+    }
+  }
+
+  .option-name-wrapper {
+    flex: 1;
+  }
+
+  .option-name {
+    font-variation-settings: 'wght' 425;
+    font-size: rem(16px);
+  }
+
+  .hint {
+    font-size: rem(14px);
+    margin: rem(2px) 0 0;
+    color: var(--grey-800);
+    max-width: rem(480px);
+    text-wrap: pretty;
+
+    a {
+      color: inherit;
+    }
+  }
+}
+
+button {
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input[type='checkbox'] {
+  zoom: 1.5;
+}
+
+input:not([type='checkbox']) {
+  width: rem(100px);
+}
+
+select {
+  font-family: inherit;
+  height: rem(22px);
+}
+
+footer {
+  .action-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: rem(16px);
+    margin-bottom: rem(24px);
+  }
+
+  .links {
+    font-size: rem(12px);
+    text-align: center;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: inline;
+      color: color-mix(in srgb, currentColor, transparent);
+
+      a {
+        color: inherit;
+      }
+
+      &:not(:last-child)::after {
+        content: '·';
+        margin-inline: rem(4px);
+      }
+    }
+  }
+}
+
+@media (-moz-device-pixel-ratio) {
+  button {
+    // Make buttons a bit taller in Gecko.
+    height: rem(22px);
+  }
+}
+
+@media (-webkit-transform-2d) {
+  body {
+    // Make accent color slightly darker in Safari because on macOS
+    // versions 26+ the checkboxes don't have enough constrast
+    // against `--base-400`.
+    accent-color: var(--base-500);
+  }
+
+  button {
+    font-size: 75%;
+  }
+
+  select {
+    font-size: inherit;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: var(--grey-100);
+    background: #3b3b3b;
+  }
+
+  .options-list {
+    border-color: color-mix(in srgb, var(--grey-800) 80%, transparent);
+    background-color: var(--grey-1000);
+
+    .hint {
+      color: var(--grey-400);
+    }
+  }
+}

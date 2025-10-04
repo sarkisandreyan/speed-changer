@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preferences — Speed Changer</title>
+    <link rel="stylesheet" href="options.scss" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Preferences</h1>
+
+      <section>
+        <ul class="options-list">
+          <li>
+            <div class="option-name-wrapper">
+              <label class="option-name" for="extension_enabled"
+                >Enable Extension for All Websites</label
+              >
+              <p class="hint">
+                Changing this preference will reset exceptions.
+              </p>
+            </div>
+            <button
+              id="extension_enabled_manage_exceptions"
+              aria-haspopup="dialog"
+            >
+              Manage Exceptions…
+            </button>
+            <input type="checkbox" id="extension_enabled" />
+          </li>
+          <li>
+            <div class="option-name-wrapper">
+              <label class="option-name" for="global_speed"
+                >Global Default Speed</label
+              >
+              <p class="hint">
+                The speed at which all media will play by default on enabled
+                websites.
+              </p>
+            </div>
+            <input type="number" step="any" id="global_speed" />
+          </li>
+          <li>
+            <div class="option-name-wrapper">
+              <label class="option-name" for="minimum_speed"
+                >Minimum Speed</label
+              >
+              <p class="hint">The minimum speed at which media can play.</p>
+            </div>
+            <input type="number" step="any" id="minimum_speed" />
+          </li>
+          <li>
+            <div class="option-name-wrapper">
+              <label class="option-name" for="maximum_speed"
+                >Maximum Speed</label
+              >
+              <p class="hint">The maximum speed at which media can play.</p>
+            </div>
+            <input type="number" step="any" id="maximum_speed" />
+          </li>
+          <li>
+            <div class="option-name-wrapper">
+              <label class="option-name">Predefined Speeds</label>
+              <p class="hint">As seen in the popup and the floating view.</p>
+            </div>
+            <predefined-speeds-editor
+              id="predefined_speeds_editor"
+            ></predefined-speeds-editor>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Keyboard Shortcuts</h2>
+        <ul class="options-list">
+          <li>
+            <div class="option-name-wrapper">
+              <label class="option-name" for="keyboard_shortcuts_enabled"
+                >Enable Keyboard Shortcuts for All Websites</label
+              >
+            </div>
+            <button
+              id="keyboard_shortcuts_modify_shortcuts"
+              aria-haspopup="dialog"
+            >
+              Modify Shortcuts…
+            </button>
+            <input type="checkbox" id="keyboard_shortcuts_enabled" />
+          </li>
+          <li>
+            <div class="option-name-wrapper">
+              <label class="option-name" for="keyboard_shortcuts_target"
+                >Keyboard Shortcuts Apply</label
+              >
+            </div>
+            <select id="keyboard_shortcuts_target">
+              <option value="current">to Currently Playing Media Only</option>
+              <option value="host">Sitewide</option>
+            </select>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Floating Buttons</h2>
+        <ul class="options-list">
+          <li>
+            <div class="option-name-wrapper">
+              <label class="option-name" for="floating_buttons_enabled"
+                >Enable Floating Buttons for All Websites</label
+              >
+              <p class="hint">
+                Changing this preference will reset exceptions.
+              </p>
+            </div>
+            <button
+              id="floating_buttons_manage_exceptions"
+              aria-haspopup="dialog"
+            >
+              Manage Exceptions…
+            </button>
+            <input type="checkbox" id="floating_buttons_enabled" />
+          </li>
+          <li>
+            <div class="option-name-wrapper">
+              <label class="option-name" for="floating_buttons_target"
+                >Floating Buttons Apply</label
+              >
+              <p class="hint" id="floating_buttons_target_hint"></p>
+            </div>
+            <select id="floating_buttons_target">
+              <option value="current">to Current Video Only</option>
+              <option value="host">Sitewide</option>
+            </select>
+          </li>
+          <li>
+            <div class="option-name-wrapper">
+              <label
+                class="option-name"
+                for="floating_buttons_preferred_position"
+                >Preferred Position Relative to the Video</label
+              >
+              <p class="hint" id="floating_buttons_preferred_position_hint">
+                This preference may be overridden in specific parts of some
+                websites to avoid blocking some control elements.
+              </p>
+            </div>
+            <preferred-position-editor
+              id="floating_buttons_preferred_position"
+            ></preferred-position-editor>
+          </li>
+          <li>
+            <div class="option-name-wrapper">
+              <label class="option-name" for="floating_buttons_long_press_speed"
+                >Press-and-Hold Speed</label
+              >
+            </div>
+            <input
+              type="number"
+              step="any"
+              id="floating_buttons_long_press_speed"
+            />
+          </li>
+          <li hidden>
+            <div class="option-name-wrapper">
+              <label
+                class="option-name"
+                for="floating_buttons_force_press_speed"
+                >Force Press-and-Hold Speed</label
+              >
+            </div>
+            <input
+              type="number"
+              step="any"
+              id="floating_buttons_force_press_speed"
+            />
+          </li>
+          <li>
+            <div class="option-name-wrapper">
+              <label
+                class="option-name"
+                for="floating_buttons_dim_when_inactive"
+                >Dim when Inactive</label
+              >
+            </div>
+            <input type="checkbox" id="floating_buttons_dim_when_inactive" />
+          </li>
+          <li>
+            <div class="option-name-wrapper">
+              <label
+                class="option-name"
+                for="floating_buttons_visual_indicators_enabled"
+                >Enable Visual Indicators</label
+              >
+              <p class="hint">
+                When enabled, a small icon will appear in the corner of the
+                floating buttons to indicate whether the video is playing faster
+                or slower.
+              </p>
+            </div>
+            <input
+              type="checkbox"
+              id="floating_buttons_visual_indicators_enabled"
+            />
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Telemetry</h2>
+        <ul class="options-list">
+          <li>
+            <div class="option-name-wrapper">
+              <label class="option-name" for="allow_telemetry"
+                >Allow Telemetry</label
+              >
+              <p class="hint">
+                Allow the extension to collect completely anonymous usage
+                information to help make it even better for you.
+                <a href="#" id="allow_telemetry_link" target="_blank"
+                  >Learn more</a
+                >.
+              </p>
+            </div>
+            <input type="checkbox" id="allow_telemetry" />
+          </li>
+        </ul>
+      </section>
+      <footer>
+        <div class="action-buttons">
+          <button id="restore_defaults">Restore Defaults…</button>
+        </div>
+        <ul class="links">
+          <li>
+            <a href="#" id="privacy_policy" target="_blank">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="#" id="rate_on_market" target="_blank"
+              >Rate on the Market</a
+            >
+          </li>
+          <li>
+            <a href="#" id="report_issue" target="_blank">Report an Issue</a>
+          </li>
+          <li>
+            <a href="#" id="send_feedback" target="_blank">Send Feedback</a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speed Changer</title>
+    <link rel="stylesheet" href="popup.scss" />
+  </head>
+  <body class="enabled">
+    <header class="controls">
+      <button class="toggle-button">
+        <span class="sc-icon on-off-icon" aria-hidden="true"></span>
+        <div class="text-wrapper">
+          <span class="state">Disabled</span>
+          <small class="scope" aria-hidden="true">For This Website</small>
+        </div>
+      </button>
+      <button
+        aria-label="More options"
+        aria-haspopup="listbox"
+        class="toggle-button-dropdown-trigger"
+      ></button>
+      <div class="toggle-button-dropdown dropdown" hidden></div>
+      <input value="1.00x" class="speed-indicator" />
+    </header>
+    <div class="range">
+      <input type="range" />
+      <div class="range-ui">
+        <div class="range-ui-thumb"></div>
+      </div>
+    </div>
+    <div class="predefined-speeds">
+      <div role="separator" aria-orientation="vertical" class="divider"></div>
+      <button aria-pressed="true" class="floating-buttons-switcher">
+        Enable floating buttons
+      </button>
+      <button
+        rel="link"
+        class="preferences"
+        aria-label="Preferences"
+        title="Open Preferences"
+      >
+        <span class="sc-icon gear-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    <footer>
+      <div class="attribution">
+        Like this free tool?
+        <a href="#" class="support-link" target="_blank">Buy me a coffee</a>
+        <big>🫰</big>
+      </div>
+    </footer>
+    <div role="alert" aria-hidden="true" aria-live="polite" class="hint"></div>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

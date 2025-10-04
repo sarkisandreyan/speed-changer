@@ -1,0 +1,41 @@
+{
+  "name": "speed-changer",
+  "version": "1.0.0",
+  "author": "Sarkis Andreyan <sarkis@andreyan.com>",
+  "description": "Change playback speed on a per-video basis right from the page on YouTube, Instagram, TikTok — everywhere!",
+  "homepage": "https://speed-changer.andreyan.com",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "vite",
+    "build:chromium": "tsc && vite build --mode chromium",
+    "build:gecko": "tsc && vite build --mode gecko",
+    "build:safari": "tsc && vite build --mode safari",
+    "format": "prettier --write './**/*.{js,mjs,json,ts,mts,html,css,scss,md}'",
+    "cleanup": "rm -r dist/",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.0.2",
+    "@commitlint/config-conventional": "21.0.2",
+    "@commitlint/types": "21.0.1",
+    "@crxjs/vite-plugin": "2.0.3",
+    "@types/chrome": "0.1.1",
+    "@types/node": "24.0.15",
+    "@types/ramda": "0.31.1",
+    "husky": "9.1.7",
+    "lint-staged": "16.4.0",
+    "madge": "8.0.0",
+    "prettier": "3.6.2",
+    "sass-embedded": "1.93.2",
+    "typescript": "5.9.3",
+    "vite": "7.0.5",
+    "vite-plugin-zip-pack": "1.2.4"
+  },
+  "dependencies": {
+    "@ua-parser-js/pro-personal": "2.0.10",
+    "@webcomponents/custom-elements": "1.6.0",
+    "ramda": "0.32.0",
+    "rxjs": "7.8.2"
+  }
+}

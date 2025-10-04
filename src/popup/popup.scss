@@ -1,0 +1,423 @@
+@use '../styles/utils' as *;
+@use '../styles/typography';
+@use '../styles/iconography';
+@use '../styles/theme';
+
+@use '../styles/dropdown';
+
+:root {
+  color-scheme: light dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: rem(2px) dotted var(--base-700);
+  outline-offset: 0.2em;
+}
+
+button {
+  appearance: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font: inherit;
+  color: currentcolor;
+}
+
+body {
+  font-family:
+    'Speed Changer Inter',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+  padding: rem(9px) rem(9px) 0;
+  margin: 0;
+  min-width: rem(295px);
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  // TODO: remove this and adjust colors to Safari (nice-to-have).
+  background-color: #fff;
+  color: var(--grey-800);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: rem(9px) rem(9px) 0;
+  margin-bottom: rem(11px);
+  color: var(--normal-color);
+  --normal-color: var(--base-700);
+  --hover-color: var(--base-800);
+  --active-color: var(--base-900);
+
+  .toggle-button {
+    display: flex;
+    align-items: center;
+    gap: rem(9px);
+    font-variation-settings: 'wght' 700;
+    font-size: rem(15.6px);
+    text-transform: uppercase;
+    text-align: inherit;
+    cursor: pointer;
+
+    .on-off-icon {
+      font-size: rem(27px);
+      &::before {
+        content: '\E000';
+      }
+    }
+
+    .text-wrapper {
+      transform: translateY(rem(7px));
+    }
+
+    .scope {
+      display: block;
+      font-variation-settings: 'wght' 600;
+      font-size: 72.5%;
+      margin-top: 0.125em;
+      white-space: nowrap;
+      opacity: 0;
+      width: 0;
+    }
+
+    &:is(:hover, :focus-visible) {
+      color: var(--hover-color);
+    }
+
+    &:active {
+      color: var(--active-color);
+    }
+  }
+
+  .toggle-button-dropdown-trigger {
+    font-variation-settings: 'wght' 700;
+    font-size: rem(16px);
+    margin-inline-end: auto;
+    padding-inline: rem(5px);
+    transform: translateY(0);
+    cursor: pointer;
+
+    &::before {
+      content: '⌃';
+      display: inline-block;
+      transform: scaleY(-1) translateY(16.5%);
+    }
+
+    &:is(:hover, :focus-visible) {
+      color: var(--hover-color);
+    }
+
+    &:active {
+      color: var(--active-color);
+    }
+  }
+
+  .speed-indicator {
+    font: inherit;
+    font-size: rem(24px);
+    background: none;
+    color: inherit;
+    font-variation-settings: 'wght' 700;
+    font-feature-settings: 'tnum';
+    text-align: end;
+    padding: 0;
+    border: 0;
+    width: 0;
+  }
+}
+
+.range {
+  position: relative;
+  margin-bottom: rem(9px);
+
+  input {
+    appearance: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    margin: 0;
+    position: absolute;
+
+    &:focus-visible + .range-ui {
+      outline: rem(2px) dotted var(--base-700);
+      outline-offset: 0.2em;
+    }
+  }
+
+  .range-ui {
+    width: 100%;
+    height: rem(27px);
+    background: var(--base-100);
+    border-radius: 999em;
+    border: rem(1px) solid var(--base-400);
+    box-shadow: 0 rem(4px) rem(8px) rem(-4px)
+      color-mix(in srgb, currentColor 15%, transparent);
+    overflow: hidden;
+    pointer-events: none;
+
+    &-thumb {
+      width: rem(25px);
+      height: rem(25px);
+      background: var(--base-400);
+      border-radius: 999em;
+      position: absolute;
+      top: rem(1px);
+      left: 20%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.predefined-speeds {
+  display: flex;
+  padding: 0 rem(9px);
+  justify-content: center;
+  align-items: center;
+  column-gap: rem(6px);
+  position: relative;
+  font-size: rem(11px);
+  font-variation-settings: 'wght' 600;
+  margin-bottom: rem(9px);
+
+  .divider {
+    display: block;
+    width: rem(1px);
+    height: rem(20px);
+    background: color-mix(in srgb, currentColor 10%, transparent);
+    margin-inline: rem(4px) rem(1px);
+  }
+
+  button[data-speed] {
+    width: rem(29px);
+    height: rem(29px);
+    color: var(--normal-color);
+    font-variation-settings: 'wght' 650;
+    font-size: rem(12px);
+    line-height: 1;
+    border: rem(1px) solid currentColor;
+    border-radius: 999em;
+    box-shadow: 0 rem(4px) rem(8px) rem(-4px)
+      color-mix(in srgb, currentColor 15%, transparent);
+    cursor: pointer;
+    --normal-color: var(--base-500);
+    --hover-color: var(--base-600);
+    --pressed-color: #fff;
+    --pressed-bg: var(--base-400);
+
+    &.smaller {
+      font-size: rem(10px);
+    }
+
+    &.smallest {
+      font-size: rem(9px);
+    }
+
+    &:is(:hover, :focus-visible) {
+      color: var(--hover-color);
+    }
+
+    &[aria-pressed='true'] {
+      font-variation-settings: 'wght' 800;
+      background-color: var(--pressed-bg);
+      border-color: var(--pressed-bg);
+      color: var(--pressed-color);
+    }
+
+    &:disabled {
+      background-color: color-mix(in srgb, currentColor 10%, transparent);
+      color: var(--grey-400);
+      border-color: var(--grey-400);
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+
+  .floating-buttons-switcher {
+    font-size: rem(32px);
+    width: 1em;
+    height: 1em;
+    background: url(/src/assets/graphics/popup/fb-toggler-on.svg) center/100%
+      100%;
+    border-radius: 0.33em;
+    text-indent: -999em;
+    outline-offset: 0.075em;
+    cursor: pointer;
+
+    &[aria-pressed='false'] {
+      background-image: url(/src/assets/graphics/popup/fb-toggler-off.svg);
+    }
+  }
+
+  .preferences {
+    display: flex;
+    color: var(--grey-600);
+    outline-offset: rem(2px);
+    border-radius: 999em;
+    margin-inline-start: rem(2px);
+    cursor: pointer;
+
+    .gear-icon {
+      font-size: rem(18px);
+      &::before {
+        content: '\E001';
+      }
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: var(--grey-700);
+    }
+  }
+}
+
+.hint {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  line-height: 1.34;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: rem(9.6px);
+  transition: opacity 150ms;
+  min-height: rem(42px);
+  opacity: 0;
+
+  &[aria-hidden='true'] {
+    pointer-events: none;
+  }
+}
+
+footer {
+  transition: opacity 150ms;
+  padding: rem(9px) rem(9px) rem(10px);
+  margin: 0 rem(-9px);
+  border-top: rem(1px) solid color-mix(in srgb, currentColor 10%, transparent);
+
+  .attribution {
+    font-variation-settings: 'wght' 450;
+    font-size: rem(10px);
+    text-align: center;
+    opacity: 1;
+
+    a {
+      color: var(--base-600);
+    }
+
+    big {
+      vertical-align: middle;
+    }
+  }
+}
+
+body.wait-period-passed {
+  header {
+    .toggle-button {
+      .text-wrapper {
+        transition: transform 150ms;
+
+        .scope {
+          transition: opacity 150ms;
+        }
+      }
+    }
+
+    .toggle-button-dropdown-trigger {
+      transition: 150ms transform;
+    }
+  }
+}
+
+body:not(.enabled) {
+  .speed-indicator,
+  .range,
+  .predefined-speeds,
+  .attribution {
+    filter: grayscale(100%);
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  header {
+    --normal-color: var(--grey-700);
+    --hover-color: var(--grey-800);
+    --active-color: var(--grey-900);
+  }
+}
+
+body.exceptional {
+  header {
+    .toggle-button .text-wrapper {
+      transform: translateY(0);
+    }
+
+    .toggle-button-dropdown-trigger {
+      transform: translateY(rem(-7px));
+    }
+  }
+}
+
+body.unavailable {
+  header {
+    .toggle-button {
+      pointer-events: none;
+    }
+
+    .toggle-button-dropdown-trigger {
+      display: none;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--grey-1000);
+    color: var(--grey-100);
+  }
+
+  header {
+    --normal-color: var(--base-500);
+    --hover-color: var(--base-400);
+    --active-color: var(--base-300);
+  }
+
+  .range .range-ui {
+    background-color: color-mix(in srgb, var(--grey-900) 62.5%, transparent);
+  }
+
+  .predefined-speeds button[data-speed] {
+    --normal-color: var(--base-400);
+    --hover-color: var(--base-300);
+    --pressed-color: var(--grey-1000);
+  }
+
+  footer .attribution a {
+    color: var(--base-500);
+  }
+
+  body:not(.enabled) {
+    header {
+      --normal-color: var(--grey-500);
+      --hover-color: var(--grey-400);
+      --active-color: var(--grey-300);
+    }
+  }
+}

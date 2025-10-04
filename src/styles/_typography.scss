@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Speed Changer Inter';
+  src: url(../assets/fonts/Inter-Variable.woff2);
+}
+
+* {
+  // Reset font-weight to normal for all elements in favor of
+  // `font-variation-settings: 'wght'` properties; `font-weight`
+  // messes up variable font rendering in Safari.
+  //
+  // `font-synthesis-weight: none` seems to resolve the issue
+  // too but I don't want to disable it in case it is needed
+  // in any of the fallback fonts.
+  font-weight: normal;
+}

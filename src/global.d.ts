@@ -1,0 +1,23 @@
+import type SpeedChangerFloatingButton from './content/custom-elements/speed-changer-floating-button';
+
+import {
+  SPEED_CHANGER_ORIGINAL_RATE,
+  SPEED_CHANGER_CUSTOM_RATE,
+  SPEED_CHANGER_TEMPORARY_RATE,
+  SPEED_CHANGER_RESET_WHEN_EMPTIED,
+  SPEED_CHANGER_FLOATING_BUTTON_REF,
+  SPEED_CHANGER_FLOATING_BUTTON_SURVIVES_ENDED,
+  SPEED_CHANGER_FLOATING_BUTTON_DISMISSED,
+} from './constants';
+
+declare global {
+  interface HTMLMediaElement {
+    [SPEED_CHANGER_ORIGINAL_RATE]?: number;
+    [SPEED_CHANGER_CUSTOM_RATE]?: number;
+    [SPEED_CHANGER_TEMPORARY_RATE]?: number;
+    [SPEED_CHANGER_RESET_WHEN_EMPTIED]?: true;
+    [SPEED_CHANGER_FLOATING_BUTTON_REF]?: SpeedChangerFloatingButton;
+    [SPEED_CHANGER_FLOATING_BUTTON_SURVIVES_ENDED]?: true;
+    [SPEED_CHANGER_FLOATING_BUTTON_DISMISSED]?: true;
+  }
+}

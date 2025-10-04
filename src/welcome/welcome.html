@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You're All Set — Speed Changer</title>
+    <link rel="stylesheet" href="welcome.scss" />
+    <link
+      rel="preload"
+      href="../assets/graphics/content/icon-faster.svg?no-inline"
+      fetchpriority="low"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="../assets/graphics/content/icon-locked.svg?no-inline"
+      fetchpriority="low"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="../assets/graphics/welcome/cursor-pointer.svg?no-inline"
+      fetchpriority="low"
+      as="image"
+    />
+  </head>
+  <body>
+    <section class="animation-area-container">
+      <div class="container">
+        <h1 class="sr-only">You're All Set!</h1>
+        <div class="animation-area" id="animation_area">
+          <div class="silhouettes"></div>
+          <div class="popup-info">
+            <div dir="auto" class="wrapper">
+              Press the
+              <img
+                src="../assets/graphics/action/icon-normal.png"
+                role="presentation"
+              />
+              <span>Speed Changer</span> icon in&nbsp;the browser toolbar
+              anytime to&nbsp;access the extension&hellip;
+            </div>
+            <img
+              src="../assets/graphics/welcome/arrow-1.svg"
+              role="presentation"
+              class="arrow arrow-1"
+            />
+          </div>
+          <div class="floating-buttons-info">
+            <div dir="auto" class="wrapper">
+              &hellip;or use the on-page floating buttons directly to control
+              the playing speed for&nbsp;individual videos.
+
+              <fieldset>
+                <legend>Enable floating buttons:</legend>
+                <label
+                  ><input
+                    type="radio"
+                    name="floating_buttons_enabled_for"
+                    value="selected-websites"
+                    checked
+                  />
+                  For selected websites
+                  <span
+                    class="sc-icon help-icon"
+                    title="YouTube, Instagram, TikTok"
+                  ></span>
+                </label>
+                <label
+                  ><input
+                    type="radio"
+                    name="floating_buttons_enabled_for"
+                    value="all-websites"
+                  />
+                  For all websites</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="floating_buttons_enabled_for"
+                    value="none"
+                  />
+                  For none — disable</label
+                >
+                <p>
+                  You can always change this in
+                  <a id="preferences_link" target="_blank">Preferences</a>.
+                </p>
+              </fieldset>
+            </div>
+            <img
+              src="../assets/graphics/welcome/arrow-2.svg"
+              role="presentation"
+              class="arrow arrow-2"
+            />
+          </div>
+          <floating-button-demo
+            class="floating-button-demo"
+          ></floating-button-demo>
+        </div>
+      </div>
+    </section>
+    <section class="footer-area">
+      <a
+        href="#"
+        id="take_a_look_link"
+        target="_blank"
+        class="take-a-look-link"
+      >
+        Take a quick look at all the features
+        <span class="sc-icon external-icon"></span>
+      </a>
+      <div class="telemetry-preference">
+        <input type="checkbox" id="allow_telemetry" checked />
+        <label for="allow_telemetry">
+          Allow the extension to collect completely anonymous usage information
+          to help make it even better for you.
+          <a href="#" id="privacy_policy_link" target="_blank">Learn more</a>.
+        </label>
+      </div>
+    </section>
+    <script type="module" src="welcome.ts"></script>
+  </body>
+</html>

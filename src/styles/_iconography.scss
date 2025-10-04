@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Speed Changer Icons';
+  src: url(../assets/fonts/SC-Icons.woff2);
+}
+
+.sc-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+
+  &::before {
+    display: block;
+    font-family: 'Speed Changer Icons';
+    font-size: 1em;
+    line-height: 1;
+  }
+}
