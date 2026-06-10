@@ -9,6 +9,7 @@
   "scripts": {
     "start": "vite",
     "build:chromium": "tsc && vite build --mode chromium",
+    "build:edge": "tsc && vite build --mode edge",
     "build:gecko": "tsc && vite build --mode gecko",
     "build:safari": "tsc && vite build --mode safari",
     "format": "prettier --write './**/*.{js,mjs,json,ts,mts,html,css,scss,md}'",

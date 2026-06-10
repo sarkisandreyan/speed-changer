@@ -144,6 +144,7 @@ getConfig().subscribe(async (config) => {
   if (import.meta.env.SC_MARKET_ITEM_LINK && rate_on_market) {
     switch (import.meta.env.MODE) {
       case 'chromium':
+      case 'edge':
         rate_on_market.textContent = 'Rate on the Chrome Web Store';
         break;
       case 'gecko':

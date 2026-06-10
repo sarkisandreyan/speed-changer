@@ -24,6 +24,7 @@ export function manifestTransformer(mode: ConfigEnv['mode']): Plugin {
           });
           break;
         case 'chromium':
+        case 'edge':
         case 'safari':
           delete parsedManifest.browser_specific_settings;
           break;
