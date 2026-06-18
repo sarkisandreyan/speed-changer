@@ -52,6 +52,7 @@ declare const floating_buttons_long_press_speed: HTMLInputElement;
 declare const floating_buttons_force_press_speed: HTMLInputElement;
 declare const floating_buttons_dim_when_inactive: HTMLInputElement;
 declare const floating_buttons_visual_indicators_enabled: HTMLInputElement;
+declare const telemetry_section: HTMLElement;
 declare const allow_telemetry: HTMLInputElement;
 declare const allow_telemetry_link: HTMLAnchorElement;
 declare const restore_defaults: HTMLButtonElement;
@@ -127,8 +128,14 @@ getConfig().subscribe(async (config) => {
   floating_buttons_visual_indicators_enabled.checked =
     config.floatingButtonsVisualIndicatorsEnabled.value;
 
-  allow_telemetry.checked = config.allowTelemetry.value;
-  allow_telemetry_link.href = import.meta.env.SC_PRIVACY_POLICY_LINK ?? '#';
+  if (
+    import.meta.env.SC_GA_MEASUREMENT_ID &&
+    import.meta.env.SC_GA_MEASUREMENT_API_SECRET
+  ) {
+    telemetry_section.hidden = false;
+    allow_telemetry.checked = config.allowTelemetry.value;
+    allow_telemetry_link.href = import.meta.env.SC_PRIVACY_POLICY_LINK ?? '#';
+  }
 
   restore_defaults.disabled = equals(defaultConfig, effectiveConfig);
 
