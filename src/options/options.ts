@@ -144,8 +144,8 @@ getConfig().subscribe(async (config) => {
       'href',
       import.meta.env.SC_PRIVACY_POLICY_LINK,
     );
-  } else {
-    privacy_policy?.parentElement?.remove();
+  } else if (typeof privacy_policy !== 'undefined') {
+    privacy_policy.parentElement?.remove();
   }
 
   if (import.meta.env.SC_MARKET_ITEM_LINK && rate_on_market) {
@@ -162,8 +162,8 @@ getConfig().subscribe(async (config) => {
         break;
     }
     rate_on_market.setAttribute('href', import.meta.env.SC_MARKET_ITEM_LINK);
-  } else {
-    rate_on_market?.parentElement?.remove();
+  } else if (typeof rate_on_market !== 'undefined') {
+    rate_on_market.parentElement?.remove();
   }
 
   if (import.meta.env.SC_REPORT_ISSUE_LINK) {
@@ -183,14 +183,14 @@ getConfig().subscribe(async (config) => {
     }
     reportUrl.searchParams.set('version', VERSION);
     report_issue?.setAttribute('href', reportUrl.toString());
-  } else {
-    report_issue?.parentElement?.remove();
+  } else if (typeof report_issue !== 'undefined') {
+    report_issue.parentElement?.remove();
   }
 
   if (import.meta.env.SC_SEND_FEEDBACK_LINK) {
     send_feedback?.setAttribute('href', import.meta.env.SC_SEND_FEEDBACK_LINK);
-  } else {
-    send_feedback?.parentElement?.remove();
+  } else if (typeof send_feedback !== 'undefined') {
+    send_feedback.parentElement?.remove();
   }
 });
 
