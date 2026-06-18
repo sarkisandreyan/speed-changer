@@ -3,7 +3,8 @@ import pkg from './package.json';
 
 export default defineManifest({
   manifest_version: 3,
-  name: 'Speed Changer',
+  name: 'Speed Changer – Play videos faster',
+  short_name: 'Speed Changer',
   version: pkg.version,
   description: pkg.description,
   icons: {

@@ -2,7 +2,7 @@
   "name": "speed-changer",
   "version": "1.0.1",
   "author": "Sarkis Andreyan <sarkis@andreyan.com>",
-  "description": "Change playback speed on a per-video basis right from the page on YouTube, Instagram, TikTok — everywhere!",
+  "description": "Play videos at 2x & faster on YouTube, Instagram, TikTok — everywhere! Control the speed right from the page using on-page controls.",
   "homepage": "https://speed-changer.andreyan.com",
   "type": "module",
   "private": true,
