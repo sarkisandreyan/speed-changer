@@ -3,6 +3,7 @@
 # Speed Changer
 
 [![Download on the Chrome Web Store](images/Download-on-the-Chrome-Web-Store.svg)](https://chromewebstore.google.com/detail/speed-changer/albfdjflebpipkmmpjblndlcjljidlei)
+[![Download on Microsoft Edge Add-Ons](images/Download-on-Microsoft-Edge-Add-Ons.svg)](https://microsoftedge.microsoft.com/addons/detail/speed-changer/ijgigneidepmehkbcmldmoipalfgmmbg)
 [![Open Interactive Demo](images/Open-Interactive-Demo.svg)](https://speed-changer.andreyan.com/?utm_source=github&utm_medium=referral&utm_campaign=sc_repo&utm_content=badge)
 
 A powerful cross-browser extension that allows you to play media up to 16x faster or slower using on-page controls. It brings the familiar experience from the apps you use to your browser — press and hold the floating buttons to play at 2x, pull away while pressing to lock the speed.
@@ -27,6 +28,7 @@ Check out this page for an interactive demo — [Speed Changer](https://speed-ch
 Download the extension from the official marketplace listings:
 
 - [Download on the Chrome Web Store](https://chromewebstore.google.com/detail/speed-changer/albfdjflebpipkmmpjblndlcjljidlei)
+- [Download on Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/speed-changer/ijgigneidepmehkbcmldmoipalfgmmbg)
 - Download on Firefox Addons (coming soon)
 - Download on the Mac App Store (coming soon)
 
