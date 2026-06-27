@@ -5,7 +5,10 @@ import browser from '../browser';
 
 // Update uninstall URL to contain `client_id` if telemetry is enabled.
 getConfigSnapshot().then(async ({ allowTelemetry }) => {
-  if (!import.meta.env.SC_GOODBYE_LINK) return;
+  if (!import.meta.env.SC_GOODBYE_LINK) {
+    browser.runtime.setUninstallURL('');
+    return;
+  }
 
   const goodbyeUrl = new URL(import.meta.env.SC_GOODBYE_LINK);
 
