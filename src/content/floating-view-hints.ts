@@ -124,7 +124,7 @@ getConfig().subscribe(
                 -FLOATING_VIEW_HINTS_REPEAT_COUNT
             ) {
               SpeedChangerFloatingView.instance!.setHintContent(
-                'If you do not like these buttons, <u>press&nbsp;here</u> to turn them off',
+                'If you do not like these buttons, you can <u>press&nbsp;here</u> to turn them off.',
                 () => {
                   setConfig({
                     floatingButtonsEnabled: false,
@@ -174,8 +174,8 @@ getConfig().subscribe(
               SpeedChangerFloatingView.instance!.setHintContent(
                 `Press and hold ${await getKeyName('Alt')} to apply the speed to ` +
                   (floatingButtonsTarget === 'current'
-                    ? 'all&nbsp;media on the website'
-                    : 'the&nbsp;current video only'),
+                    ? 'all&nbsp;media on the website.'
+                    : 'the&nbsp;current video only.'),
               );
               return;
             }
@@ -186,7 +186,7 @@ getConfig().subscribe(
                 -FLOATING_VIEW_HINTS_REPEAT_COUNT
             ) {
               SpeedChangerFloatingView.instance!.setHintContent(
-                `Press and hold ${await getKeyName('Command')} to move the floating button around the page`,
+                `Press and hold ${await getKeyName('Command')} to move the floating buttons around the page.`,
               );
             }
 
@@ -196,11 +196,11 @@ getConfig().subscribe(
                 -FLOATING_VIEW_HINTS_REPEAT_COUNT
             ) {
               SpeedChangerFloatingView.instance!.setHintContent(
-                `If you ever experience issues with the extension, you can just <u>report them</u> from Preferences.`,
+                `If you experience issues with the extension, you can <u>report them</u> from&nbsp;Preferences.`,
                 () => {
                   sendMessage({
                     action: 'open-options-page',
-                    data: '#report_an_issue',
+                    data: '#report_issue',
                   });
                 },
               );
