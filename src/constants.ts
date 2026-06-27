@@ -1,11 +1,13 @@
 import pkg from '../package.json';
 
+export const VERSION = pkg.version;
+
 export const PLATFORM_MAX_SPEED = 16;
 export const PLATFORM_MIN_SPEED = 1 / 16;
 
 export const RANGE_STEP_VALUE = 0.25;
 
-export const VERSION = pkg.version;
+export const FLOATING_VIEW_HINTS_REPEAT_COUNT = 3;
 
 export const TELEMETRY_ENDPOINT = 'https://www.google-analytics.com/mp/collect';
 export const TELEMETRY_PAGE_SESSION_EXPIRES_IN = 30 * 60 * 1e3; // 30 minutes

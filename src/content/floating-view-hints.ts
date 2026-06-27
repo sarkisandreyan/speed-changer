@@ -4,6 +4,7 @@ import type {
   LocalStorageData,
 } from '../types';
 import { filter, fromEvent, merge, Subject, takeUntil } from 'rxjs';
+import { FLOATING_VIEW_HINTS_REPEAT_COUNT } from '../constants';
 import SpeedChangerFloatingView from './custom-elements/speed-changer-floating-view';
 import {
   defaultConfig,
@@ -74,8 +75,8 @@ getConfig().subscribe(
             });
 
             if (
-              floatingViewTimesShown > 5 &&
-              floatingViewTimesShown % 100 < 5
+              floatingViewTimesShown > FLOATING_VIEW_HINTS_REPEAT_COUNT &&
+              floatingViewTimesShown % 100 < FLOATING_VIEW_HINTS_REPEAT_COUNT
             ) {
               SpeedChangerFloatingView.instance!.setHintContent(
                 'Like this free tool? <u>Buy me a coffee</u> <big>☕️</big>',
@@ -110,7 +111,8 @@ getConfig().subscribe(
 
             for (const _hint in floatingViewHints) {
               const hint = _hint as FloatingViewHint;
-              if (floatingViewHints[hint] < -5) continue;
+              if (floatingViewHints[hint] < -FLOATING_VIEW_HINTS_REPEAT_COUNT)
+                continue;
               floatingViewHints[hint]--;
             }
 
@@ -118,7 +120,8 @@ getConfig().subscribe(
 
             if (
               floatingViewHints.disableFloatingButtons < 0 &&
-              floatingViewHints.disableFloatingButtons >= -5
+              floatingViewHints.disableFloatingButtons >=
+                -FLOATING_VIEW_HINTS_REPEAT_COUNT
             ) {
               SpeedChangerFloatingView.instance!.setHintContent(
                 'If you do not like these buttons, <u>press&nbsp;here</u> to turn them off',
@@ -140,7 +143,8 @@ getConfig().subscribe(
 
             if (
               floatingViewHints.keyboardShortcuts < 0 &&
-              floatingViewHints.keyboardShortcuts >= -5
+              floatingViewHints.keyboardShortcuts >=
+                -FLOATING_VIEW_HINTS_REPEAT_COUNT
             ) {
               const { keyboardShortcutsBindings } = await getConfigSnapshot();
               if (
@@ -162,7 +166,8 @@ getConfig().subscribe(
 
             if (
               floatingViewHints.altSitewideFloatingButtons < 0 &&
-              floatingViewHints.altSitewideFloatingButtons >= -5
+              floatingViewHints.altSitewideFloatingButtons >=
+                -FLOATING_VIEW_HINTS_REPEAT_COUNT
             ) {
               const { floatingButtonsTarget } = await getConfigSnapshot();
 
@@ -177,7 +182,8 @@ getConfig().subscribe(
 
             if (
               floatingViewHints.floatingButtonsMovable < 0 &&
-              floatingViewHints.floatingButtonsMovable >= -5
+              floatingViewHints.floatingButtonsMovable >=
+                -FLOATING_VIEW_HINTS_REPEAT_COUNT
             ) {
               SpeedChangerFloatingView.instance!.setHintContent(
                 `Press and hold ${await getKeyName('Command')} to move the floating button around the page`,
@@ -186,7 +192,8 @@ getConfig().subscribe(
 
             if (
               floatingViewHints.reportAnIssue < 0 &&
-              floatingViewHints.reportAnIssue >= -5
+              floatingViewHints.reportAnIssue >=
+                -FLOATING_VIEW_HINTS_REPEAT_COUNT
             ) {
               SpeedChangerFloatingView.instance!.setHintContent(
                 `If you ever experience issues with the extension, you can just <u>report them</u> from Preferences.`,
