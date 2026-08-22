@@ -41,6 +41,10 @@ export default defineManifest({
     },
     {
       matches: ['<all_urls>'],
+      resources: ['src/assets/scripts/override-history.js'],
+    },
+    {
+      matches: ['<all_urls>'],
       resources: ['src/welcome/welcome.html'],
     },
   ],
