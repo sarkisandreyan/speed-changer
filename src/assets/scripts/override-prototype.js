@@ -1,6 +1,6 @@
 (function () {
-  const __speed_changer_play_original_key__ = Symbol(
-    '__speed_changer_play_original__',
+  const __speed_changer_original_implementation__ = Symbol(
+    '__speed_changer_original_implementation__',
   );
 
   function __speed_changer_play_override__() {
@@ -17,11 +17,11 @@
     }
 
     return __speed_changer_play_override__[
-      __speed_changer_play_original_key__
+      __speed_changer_original_implementation__
     ].call(this, ...arguments);
   }
 
-  __speed_changer_play_override__[__speed_changer_play_original_key__] =
+  __speed_changer_play_override__[__speed_changer_original_implementation__] =
     HTMLMediaElement.prototype.play;
 
   HTMLMediaElement.prototype.play = __speed_changer_play_override__;

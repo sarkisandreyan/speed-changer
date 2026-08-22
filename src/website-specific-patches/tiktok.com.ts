@@ -125,6 +125,6 @@ export function setup() {
 }
 
 export function teardown() {
-  style.remove();
+  style?.remove();
   onDisabled.next();
 }
