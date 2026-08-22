@@ -90,7 +90,7 @@ export type EventName =
   | 'popup_enable_fb_click'
   | 'popup_disable_fb_click'
   | 'popup_preferences_click'
-  | 'popup_support_click'
+  | 'popup_rate_click'
   | 'floating_button_engagement_begin'
   | 'floating_button_engagement_end'
   | 'floating_button_dismiss'

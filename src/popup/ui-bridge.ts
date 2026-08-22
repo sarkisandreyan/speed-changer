@@ -21,6 +21,6 @@ export default {
   )!,
   footer: document.querySelector<HTMLElement>('footer')!,
   preferences: document.querySelector<HTMLButtonElement>('.preferences')!,
-  supportLink: document.querySelector<HTMLAnchorElement>('.support-link')!,
+  footerLink: document.querySelector<HTMLAnchorElement>('footer a')!,
   hint: document.querySelector<HTMLElement>('.hint')!,
 };

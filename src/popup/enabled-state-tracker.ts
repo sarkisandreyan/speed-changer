@@ -13,7 +13,7 @@ getConfig().subscribe(async ({ enabled, enabledHostExceptions }) => {
 
     ui.indicator.disabled = !enabled;
     ui.range.disabled = !enabled;
-    ui.supportLink.tabIndex = !enabled ? -1 : 0;
+    ui.footerLink.tabIndex = !enabled ? -1 : 0;
 
     ui.predefinedSpeeds
       .querySelectorAll<HTMLButtonElement>('button[data-speed]')

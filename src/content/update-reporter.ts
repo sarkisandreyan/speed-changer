@@ -30,7 +30,9 @@ if (typeof pendingTelemetryForUpdateAt === 'number') {
     );
   }
 
-  payload.events[0].params.timestamp_micros = `${pendingTelemetryForUpdateAt * 1000}`;
+  payload.events[0].params.timestamp_micros = String(
+    pendingTelemetryForUpdateAt * 1000,
+  );
   await sendTelemetry(payload);
 
   await browser.storage.local.remove<LocalStorageData>(

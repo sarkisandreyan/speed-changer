@@ -1,5 +1,4 @@
 import type { MessagingRequest } from '../types';
-import { getConfigSnapshot } from '../config';
 import { sendEvent } from '../telemetry/private-api';
 import {
   isValidMessagingPayload,
@@ -33,22 +32,6 @@ browser.runtime.onConnect.addListener((port) => {
         break;
       case 'get-current-tab-url':
         respond(port.sender?.tab?.url);
-        break;
-      case 'open-support-page':
-        const { allowTelemetry } = await getConfigSnapshot();
-        const link = new URL(import.meta.env.SC_SUPPORT_LINK);
-        if (allowTelemetry) {
-          link.searchParams.set(
-            'utm_source',
-            `sc_extension_${import.meta.env.MODE}`,
-          );
-          link.searchParams.set('utm_medium', 'extension');
-          link.searchParams.set('utm_content', 'popup_footer_link');
-        }
-        browser.tabs.create({
-          url: link.toString(),
-        });
-        respond('ok');
         break;
       case 'get-platform-info':
         browser.runtime.getPlatformInfo().then(respond);
