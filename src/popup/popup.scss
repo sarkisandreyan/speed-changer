@@ -311,20 +311,17 @@ footer {
   padding: rem(9px) rem(9px) rem(10px);
   margin: 0 rem(-9px);
   border-top: rem(1px) solid color-mix(in srgb, currentColor 10%, transparent);
+  font-variation-settings: 'wght' 450;
+  font-size: rem(10px);
+  text-align: center;
+  opacity: 1;
 
-  .attribution {
-    font-variation-settings: 'wght' 450;
-    font-size: rem(10px);
-    text-align: center;
-    opacity: 1;
+  a {
+    color: var(--base-600);
+  }
 
-    a {
-      color: var(--base-600);
-    }
-
-    big {
-      vertical-align: middle;
-    }
+  big {
+    vertical-align: middle;
   }
 }
 
@@ -350,7 +347,7 @@ body:not(.enabled) {
   .speed-indicator,
   .range,
   .predefined-speeds,
-  .attribution {
+  footer {
     filter: grayscale(100%);
     opacity: 0.25;
     pointer-events: none;
@@ -409,7 +406,7 @@ body.unavailable {
     --pressed-color: var(--grey-1000);
   }
 
-  footer .attribution a {
+  footer a {
     color: var(--base-500);
   }
 
