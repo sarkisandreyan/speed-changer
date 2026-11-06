@@ -31,7 +31,7 @@ export async function getClientId(): Promise<string> {
 
   const client_id = generateUserId();
   telemetryInfo = {
-    ...(telemetryInfo ?? {}),
+    ...telemetryInfo,
     client_id,
   };
   await browser.storage.local.set<LocalStorageData>({ telemetryInfo });
@@ -64,7 +64,7 @@ export async function getDeviceInfo(): Promise<DeviceInfo> {
   };
 
   telemetryInfo = {
-    ...(telemetryInfo ?? {}),
+    ...telemetryInfo,
     device,
   };
   await browser.storage.local.set<LocalStorageData>({ telemetryInfo });
@@ -135,7 +135,7 @@ export async function getSessionId(
 
   const sessionId = generateSessionId();
   sessionIds = {
-    ...(sessionIds ?? {}),
+    ...sessionIds,
     [realm]: sessionId,
   };
   await browser.storage.local.set<LocalStorageData>({ sessionIds });

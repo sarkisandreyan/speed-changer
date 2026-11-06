@@ -24,15 +24,15 @@ export async function sendMessage<ResponseBody = any>(
     throw new TypeError('Invalid messaging payload.');
   }
 
-  return new Promise(async (resolve, reject) => {
-    if (!port) {
-      // Set up a new port if the previous one was closed.
-      setupPort();
-    } else if (import.meta.env.MODE === 'safari') {
-      // See comment above the function for details.
-      await pingBasedSetupFallback();
-    }
+  if (!port) {
+    // Set up a new port if the previous one was closed.
+    setupPort();
+  } else if (import.meta.env.MODE === 'safari') {
+    // See comment above the function for details.
+    await pingBasedSetupFallback();
+  }
 
+  return new Promise((resolve, reject) => {
     // Just to avoid non-null-asserting everywhere below.
     if (!port) return;
 

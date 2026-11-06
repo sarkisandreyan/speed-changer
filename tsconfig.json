@@ -8,14 +8,12 @@
     "useDefineForClassFields": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noEmit": true,
     "isolatedModules": true,
-    "skipLibCheck": true,
-    "noUncheckedSideEffectImports": true
+    "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": ["src", "*.ts"]
 }

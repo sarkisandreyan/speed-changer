@@ -1,3 +1,4 @@
+// oxlint-disable-next-line no-unused-vars
 import type { getTrackableHost } from './src/utils/telemetry';
 
 /**

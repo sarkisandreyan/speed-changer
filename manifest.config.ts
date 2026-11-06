@@ -1,5 +1,5 @@
+import pkg from './package.json' with { type: 'json' };
 import { defineManifest } from '@crxjs/vite-plugin';
-import pkg from './package.json';
 
 export default defineManifest({
   manifest_version: 3,
@@ -49,7 +49,6 @@ export default defineManifest({
     },
   ],
   permissions: ['storage'],
-  // @ts-expect-error `browser_specific_settings` is not specified by @crxjs/vite-plugin
   browser_specific_settings: {
     gecko: {
       id: 'speed-changer@andreyan.com',

@@ -61,7 +61,7 @@ export const defaultConfig: Config = {
   floatingButtonsForcePressSpeed: 2,
   allowTelemetry: Boolean(
     import.meta.env.SC_GA_MEASUREMENT_API_SECRET &&
-      import.meta.env.SC_GA_MEASUREMENT_ID,
+    import.meta.env.SC_GA_MEASUREMENT_ID,
   ),
 };
 

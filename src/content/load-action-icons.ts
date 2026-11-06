@@ -11,6 +11,7 @@ import iconSlower from '../assets/graphics/action/icon-slower.png?url';
  * imported somewhere in the content script too.
  */
 function noop(...args: any[]) {
+  // oxlint-disable-next-line no-unused-expressions
   args;
 }
 
