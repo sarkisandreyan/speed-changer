@@ -103,16 +103,8 @@ export function setup() {
       const isOnReelsPage = window.location.href.indexOf('/reels/') > -1;
       const isOnModalPage = window.location.href.indexOf('/p/') > -1;
 
-      // Destroy buttons when the window location is changed
-      // so that they appear in their correct positions. This
-      // resolves the issue where Instagram reels 'expanded'
-      // from the feed (both using the same video element)
-      // keep their in-feed base detachment in the reels
-      // section, making the floating button look odd.
-      // TODO: This has the side effect of not persisting the
-      // locked state of the floating button, and, overall,
-      // destroying the button just to correct its position
-      // seems is probably suboptimal.
+      // Readjust the floating buttons when switching between
+      // the new 'reels screen' and the feed.
       for (const button of SpeedChangerFloatingButton.instances) {
         const isInsideModal = !!button.mediaElement.closest(
           '[role="dialog"][aria-modal="true"]',

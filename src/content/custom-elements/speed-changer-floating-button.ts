@@ -41,7 +41,7 @@ export default class SpeedChangerFloatingButton extends HTMLElement {
   static instances = new Set<SpeedChangerFloatingButton>();
 
   /**
-   * Applied when the floating button is movable (i.e. the Meta key
+   * Applied when the floating button is movable (i.e. the Command key
    * has been pressed and held).
    */
   static MOVABLE: State = 'speed-changer-floating-button-movable' as State;
@@ -61,7 +61,7 @@ export default class SpeedChangerFloatingButton extends HTMLElement {
   /**
    * Safari-only.
    *
-   * Applied when the floating button is force-pressed (using the touchbar).
+   * Applied when the floating button is force-pressed (using the trackpad).
    */
   static FORCED: State = 'speed-changer-floating-button-forced' as State;
   /**
@@ -86,12 +86,13 @@ export default class SpeedChangerFloatingButton extends HTMLElement {
 
   #viewportPosition: ViewportPosition = { x: 0, y: 0 };
   /**
-   * The base detachment, applied programmatically in order to adjust
-   * the position of the button covering important UI of some apps.
+   * The base detachment, applied programmatically in order to adjust the
+   * position of the button covering important UI elements of some apps.
    */
   baseDetachment: Detachment = { x: 0, y: 0 };
   /**
-   * The detachment applied by the user (by moving it with the Command key pressed).
+   * The detachment applied by the user (by moving it with the Command key
+   * pressed and held).
    */
   detachment: Detachment = { x: 0, y: 0 };
   #pendingDetachment: Detachment = { x: 0, y: 0 };
@@ -749,15 +750,9 @@ export default class SpeedChangerFloatingButton extends HTMLElement {
         .subscribe(({ type }) => {
           if (this.longPressSpeed === this.forcePressSpeed) return;
 
-          if (this.movable) return;
+          if (this.movable || this.locked) return;
 
-          if (this.locked) return;
-
-          if (type === 'webkitmouseforcedown') {
-            this.setForcePressed(true);
-          } else {
-            this.setForcePressed(false);
-          }
+          this.setForcePressed(type === 'webkitmouseforcedown');
         });
     }
 
@@ -809,16 +804,7 @@ export default class SpeedChangerFloatingButton extends HTMLElement {
     this.#shadow.appendChild(this.#ui.mainButton);
   }
 
-  #glow() {
-    const glowEffect = document.createElement('div');
-    glowEffect.classList.add('glow-effect');
-    glowEffect.addEventListener('animationend', () => {
-      glowEffect.remove();
-    });
-    this.#shadow.appendChild(glowEffect);
-  }
-
-  async #initializeCloseButton() {
+  #initializeCloseButton() {
     this.#ui.closeButton.title = `Dismiss`;
 
     fromEvent<MouseEvent>(this.#ui.closeButton, 'click')
@@ -830,5 +816,14 @@ export default class SpeedChangerFloatingButton extends HTMLElement {
       });
 
     this.#shadow.insertBefore(this.#ui.closeButton, this.#ui.mainButton);
+  }
+
+  #glow() {
+    const glowEffect = document.createElement('div');
+    glowEffect.classList.add('glow-effect');
+    glowEffect.addEventListener('animationend', () => {
+      glowEffect.remove();
+    });
+    this.#shadow.appendChild(glowEffect);
   }
 }
